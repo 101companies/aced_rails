@@ -1,4 +1,4 @@
-// based on https://github.com/danmichaelo/acewiki
+// all credit goes to https://github.com/danmichaelo/acewiki
 define('ace/mode/wiki', function(require, exports, module) {
 
   var oop = require("../lib/oop");
