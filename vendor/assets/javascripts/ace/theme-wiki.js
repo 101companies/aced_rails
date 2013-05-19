@@ -1,4 +1,7 @@
-// all credit goes to https://github.com/danmichaelo/acewiki
+/**
+ * All credit goes to Dan Michael Heggø,
+ * based on https://github.com/danmichaelo/acewiki
+**/
 define('ace/theme/wiki', ['require', 'exports', 'module' , 'ace/lib/dom'], function(require, exports, module) {
 
 exports.isDark = false;
