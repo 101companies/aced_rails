@@ -2,21 +2,6 @@
  * All credit goes to Dan Michael Heggø,
  * based on https://github.com/danmichaelo/acewiki
 **/
-define('ace/mode/wiki', function(require, exports, module) {
-
-  var oop = require("../lib/oop");
-  var TextMode = require("./text").Mode;
-  // var Tokenizer = require("../tokenizer").Tokenizer;
-  var WikiHighlightRules = require("./wiki_highlight_rules").WikiHighlightRules;
-
-  var Mode = function() {
-    var highlighter = new WikiHighlightRules();
-    // this.$tokenizer = new Tokenizer(highlighter.getRules());
-  };
-  oop.inherits(Mode, TextMode);
-
-  exports.Mode = Mode;
-});
 
 define('ace/mode/wiki_highlight_rules', ['require', 'exports', 'module' , 'ace/lib/oop', 'ace/mode/text_highlight_rules'], function(require, exports, module) {
 
@@ -29,20 +14,6 @@ define('ace/mode/wiki_highlight_rules', ['require', 'exports', 'module' , 'ace/l
     // regexps are ordered -> the first match is used
     this.$rules = {
         start : [
-            /*{
-                // Curly and square braces
-                token : "lparen",
-                regex : "[[({]"
-            }, {
-                // Curly and square braces
-                token : "rparen",
-                regex : "[\\])}]"
-            },
-             {
-                // Templates {{ ... }}
-                token : "template",
-                regex : "{{[^}]*}}"
-            },*/
             {
                 token : "comment",
                 merge : true,
@@ -174,4 +145,23 @@ define('ace/mode/wiki_highlight_rules', ['require', 'exports', 'module' , 'ace/l
 
   oop.inherits(WikiHighlightRules, TextHighlightRules);
   exports.WikiHighlightRules = WikiHighlightRules;
+});
+
+
+define('ace/mode/wiki', function(require, exports, module) {
+
+  var oop = require("../lib/oop");
+  var TextMode = require("./text").Mode;
+  var WikiHighlightRules = require("./wiki_highlight_rules").WikiHighlightRules;
+
+  var Mode = function() {
+    this.HighlightRules = WikiHighlightRules;
+  };
+  oop.inherits(Mode, TextMode);
+
+  (function() {
+      this.$id = "ace/mode/wiki";
+  }).call(Mode.prototype);
+
+  exports.Mode = Mode;
 });
