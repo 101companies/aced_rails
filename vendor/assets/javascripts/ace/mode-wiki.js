@@ -6,12 +6,12 @@ define('ace/mode/wiki', function(require, exports, module) {
 
   var oop = require("../lib/oop");
   var TextMode = require("./text").Mode;
-  var Tokenizer = require("../tokenizer").Tokenizer;
+  // var Tokenizer = require("../tokenizer").Tokenizer;
   var WikiHighlightRules = require("./wiki_highlight_rules").WikiHighlightRules;
 
   var Mode = function() {
     var highlighter = new WikiHighlightRules();
-    this.$tokenizer = new Tokenizer(highlighter.getRules());
+    // this.$tokenizer = new Tokenizer(highlighter.getRules());
   };
   oop.inherits(Mode, TextMode);
 
